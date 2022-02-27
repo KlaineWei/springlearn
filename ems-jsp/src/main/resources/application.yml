@@ -1,0 +1,29 @@
+server:
+  port: 8989 #????
+  servlet:
+    context-path: /ems-jsp #?????
+    jsp:
+      init-parameters:
+        development: true #??jsp??????
+
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ems-sys?characterEncoding=UTF-8&useSSL=true
+    username: root
+    password: 12345678
+
+mybatis:
+  mapper-locations: classpath:com/example/emsjsp/mapper/*.xml
+  type-aliases-package: com.example.emsjsp.entity
+
+logging:
+  level:
+    root: info
+    com.example.emsjsp.controller: debug
+    com.example.emsjsp.dao: debug

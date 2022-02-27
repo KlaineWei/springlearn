@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.emsjsp.dao.EmployeeDao">
+
+    <select id="list" resultType="Employee">
+        select id, name, birth, salary, gender from `employee`
+    </select>
+
+    <insert id="add" parameterType="Employee" useGeneratedKeys="true" keyProperty="id">
+        insert into `employee` values(#{id},#{name},#{birth},#{gender},#{salary})
+    </insert>
+
+    <select id="findById" parameterType="Integer" resultType="Employee">
+        select id, name, birth, salary, gender from `employee`
+        where id=#{id}
+    </select>
+
+    <update id="update" parameterType="Employee">
+        update `employee` set name=#{name}, birth=#{birth}, gender=#{gender}, salary=#{salary}
+        where id=${id}
+    </update>
+
+    <delete id="delete" parameterType="Integer">
+        delete from `employee` where id=#{id}
+    </delete>
+
+</mapper>
