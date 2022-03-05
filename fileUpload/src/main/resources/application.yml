@@ -1,0 +1,30 @@
+
+server:
+  port: 8989
+  servlet:
+    context-path: /fileupload
+
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .html
+  thymeleaf:
+    cache: false
+  web:
+    resources:
+      static-locations:
+        classpath:/templates/
+  servlet:
+    multipart:
+      max-request-size: 100MB
+      max-file-size: 100MB
+
+logging:
+  level:
+    com.example.controller: debug
+
+file:
+  upload:
+    dir: /Users/weizihan/Documents/GitHub/springlearn/fileUpload/src/upload
+
