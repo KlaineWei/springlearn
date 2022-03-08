@@ -15,7 +15,7 @@ public class UserController {
 
     private UsersService usersService;
 
-    @Value("${page.pageSize")
+    @Value("${page.pageSize}")
     private Integer pageSize;
 
     @Autowired
@@ -34,14 +34,19 @@ public class UserController {
         return usersService.selectAll();
     }
 
-    @PatchMapping ("/gender/{id}")
-    public void updateGenderById(@PathVariable("id") Integer id, @RequestBody String gender){
-        usersService.updateGenderById(gender, id);
-    }
+//    @PatchMapping ("/gender/{id}")
+//    public void updateGenderById(@PathVariable("id") Integer id, @RequestBody String gender){
+//        usersService.updateGenderById(gender, id);
+//    }
 
     @GetMapping("/page/{id}")
     public Page<Users> getPage(@PathVariable("id") Integer id){
         return usersService.selectPage(id, pageSize);
+    }
+
+    @GetMapping("/family")
+    public List<Users> getAllFamilyInfo(){
+        return usersService.getAllFamilyInfo();
     }
 
 }

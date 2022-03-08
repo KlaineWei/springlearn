@@ -1,6 +1,8 @@
 package com.example.mybatisx.mapper;
 import java.util.List;
 
+
+import com.example.mybatisx.entity.Family;
 import com.example.mybatisx.entity.Users;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
@@ -19,8 +21,7 @@ public interface UsersMapper extends BaseMapper<Users> {
 
     List<Users> selectAll();
 
-    int updateGenderById(@Param("gender") String gender, @Param("id") Object id);
-
+    List<Users> getAllFamilyInfo();
 }
 
 

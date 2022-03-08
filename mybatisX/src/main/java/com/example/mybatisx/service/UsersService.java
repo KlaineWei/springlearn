@@ -17,7 +17,7 @@ public interface UsersService extends IService<Users> {
 
     List<Users> selectAll();
 
-    int updateGenderById(String gender, Integer id);
-
     Page<Users> selectPage(Integer id, Integer size);
+
+    List<Users> getAllFamilyInfo();
 }

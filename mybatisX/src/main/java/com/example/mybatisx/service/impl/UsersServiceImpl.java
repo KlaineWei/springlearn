@@ -37,14 +37,14 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users>
     }
 
     @Override
-    public int updateGenderById(String gender, Integer id) {
-        return usersMapper.updateGenderById(gender, id);
-    }
-
-    @Override
     public Page<Users> selectPage(Integer id, Integer size) {
         Page<Users> page = new Page<>(id, size);
         return usersMapper.selectPage(page, null);
+    }
+
+    @Override
+    public List<Users> getAllFamilyInfo() {
+        return usersMapper.getAllFamilyInfo();
     }
 }
 

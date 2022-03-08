@@ -13,17 +13,21 @@
             <result property="is_deleted" column="is_deleted" jdbcType="OTHER"/>
     </resultMap>
 
+    <resultMap id="FamilyInfo" type="com.example.mybatisx.entity.Users">
+        <id property="id" column="u_id"/>
+        <result property="name" column="u_name"/>
+        <result property="gender" column="gender"/>
+        <collection property="family" column="family_name" ofType="com.example.mybatisx.entity.Family">
+            <id property="id" column="f_id"/>
+            <result property="name" column="f_name"/>
+            <result property="type" column="type"/>
+        </collection>
+    </resultMap>
+
     <sql id="Base_Column_List">
         id,name,gender,
         create_time,update_time,is_deleted
     </sql>
-    <select id="selectByIdEquals" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from users
-        where
-        id = #{id}
-    </select>
     <select id="selectOneById" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
@@ -39,9 +43,11 @@
         <include refid="Base_Column_List"/>
         from users
     </select>
-    <update id="updateGenderById">
-        update users
-        set gender = #{gender,jdbcType=VARCHAR}
-        where id = #{id}
-    </update>
+    <select id="getAllFamilyInfo" resultMap="FamilyInfo">
+        select users.id as u_id, users.name as u_name, users.gender, family.id as f_id, family.name as f_name, family.type
+        from users
+        left join family
+        on users.name=family.name
+    </select>
+
 </mapper>
