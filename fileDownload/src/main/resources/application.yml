@@ -1,0 +1,25 @@
+server:
+  port: 8989
+  servlet:
+    context-path: /fileDownload
+
+
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .html
+
+  thymeleaf:
+    cache: false
+
+  web:
+    resources:
+      static-locations:
+        classpath:/templates/
+
+file:
+  download:
+    dir:
+      /Users/weizihan/Documents/GitHub/springlearn/fileDownload/download
+
