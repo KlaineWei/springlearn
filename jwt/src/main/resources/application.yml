@@ -4,12 +4,13 @@ server:
     context-path: /jwt
 
 jwt:
-  tokenPrefix: "ITManage"
-  secret: "12345678abc"
-  expireTime: 100
-  header:
-    alg: "HS256"
-    typ: "JWT"
+  itmanage:
+    tokenPrefix: "ITManage"
+    secret: "12345678abc"
+    expireTime: 100
+    header:
+      alg: "HS256"
+      typ: "JWT"
 
 spring:
   web:

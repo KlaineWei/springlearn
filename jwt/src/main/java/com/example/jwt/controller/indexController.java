@@ -25,10 +25,10 @@ public class indexController {
     }
 
     @GetMapping("/login")
-    public ModelAndView login(HttpServletResponse response) {
+    public Map<String, Object> login(HttpServletResponse response) {
         Map<String, Object> map = jwtService.login();
-        response.setHeader(JWTUtil.USER_LOGIN_TOKEN, (String) map.get("token"));
-        System.out.println(response.getHeader(JWTUtil.USER_LOGIN_TOKEN));
-        return new ModelAndView("index") ;
+//        response.setHeader(JWTUtil.USER_LOGIN_TOKEN, (String) map.get("token"));
+        System.out.println(map);
+        return map;
     }
 }
