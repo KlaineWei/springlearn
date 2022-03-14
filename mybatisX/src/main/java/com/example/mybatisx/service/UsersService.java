@@ -20,4 +20,6 @@ public interface UsersService extends IService<Users> {
     Page<Users> selectPage(Integer id, Integer size);
 
     List<Users> getAllFamilyInfo();
+
+    List<Users> getFigureInfo();
 }

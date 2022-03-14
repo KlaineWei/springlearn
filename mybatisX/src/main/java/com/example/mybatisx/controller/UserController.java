@@ -49,4 +49,9 @@ public class UserController {
         return usersService.getAllFamilyInfo();
     }
 
+    @GetMapping("/figure")
+    public List<Users> getFigureInfo(){
+        return usersService.getFigureInfo();
+    }
+
 }

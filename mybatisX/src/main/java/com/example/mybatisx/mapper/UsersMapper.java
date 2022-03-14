@@ -22,6 +22,8 @@ public interface UsersMapper extends BaseMapper<Users> {
     List<Users> selectAll();
 
     List<Users> getAllFamilyInfo();
+
+    List<Users> getFigureInfo();
 }
 
 

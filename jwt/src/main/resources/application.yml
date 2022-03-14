@@ -1,0 +1,17 @@
+server:
+  port: 8700
+  servlet:
+    context-path: /jwt
+
+jwt:
+  tokenPrefix: "ITManage"
+  secret: "12345678abc"
+  expireTime: 100
+  header:
+    alg: "HS256"
+    typ: "JWT"
+
+spring:
+  web:
+    resources:
+      static-locations: classpath:/templates/, classpath:/static/

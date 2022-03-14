@@ -46,6 +46,11 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users>
     public List<Users> getAllFamilyInfo() {
         return usersMapper.getAllFamilyInfo();
     }
+
+    @Override
+    public List<Users> getFigureInfo() {
+        return usersMapper.getFigureInfo();
+    }
 }
 
 
