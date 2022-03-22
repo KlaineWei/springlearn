@@ -1,5 +1,6 @@
 package com.example.mybatisx.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.mybatisx.entity.Users;
@@ -8,6 +9,8 @@ import com.example.mybatisx.mapper.UsersMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -50,6 +53,16 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users>
     @Override
     public List<Users> getFigureInfo() {
         return usersMapper.getFigureInfo();
+    }
+
+    @Override
+    public int insertBatch(Collection<Users> usersCollection) {
+        return usersMapper.insertBatch(usersCollection);
+    }
+
+    @Override
+    public List<JSONObject> getAllFamily() {
+        return usersMapper.getAllFamily();
     }
 }
 
