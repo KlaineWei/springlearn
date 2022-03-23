@@ -5,12 +5,12 @@
 <mapper namespace="com.example.mybatisx.mapper.UsersMapper">
 
     <resultMap id="BaseResultMap" type="com.example.mybatisx.entity.Users">
-            <id property="id" column="id" jdbcType="OTHER"/>
-            <result property="name" column="name" jdbcType="VARCHAR"/>
-            <result property="gender" column="gender" jdbcType="VARCHAR"/>
-            <result property="create_time" column="create_time" jdbcType="TIMESTAMP"/>
-            <result property="update_time" column="update_time" jdbcType="TIMESTAMP"/>
-            <result property="is_deleted" column="is_deleted" jdbcType="OTHER"/>
+        <id property="id" column="id" jdbcType="OTHER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="gender" column="gender" jdbcType="VARCHAR"/>
+        <result property="create_time" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="update_time" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="is_deleted" column="is_deleted" jdbcType="OTHER"/>
     </resultMap>
 
     <resultMap id="FamilyInfo" type="com.example.mybatisx.entity.Users">
@@ -24,8 +24,31 @@
         </collection>
     </resultMap>
 
+    <resultMap id="familyMap" type="com.example.mybatisx.util.model.One2Many">
+        <id column="u_id" property="id"/>
+        <result property="name" column="u_name"/>
+        <result property="gender" column="gender"/>
+        <collection property="families" column="f_id" ofType="com.alibaba.fastjson.JSONObject">
+            <id property="id" column="f_id"/>
+            <result property="name" column="f_name"/>
+            <result property="type" column="type"/>
+        </collection>
+    </resultMap>
+
+    <resultMap id="FigureInfo" type="com.example.mybatisx.entity.Users">
+        <id property="id" column="u_id"/>
+        <result property="name" column="u_name"/>
+        <result property="gender" column="gender"/>
+        <association property="figure" column="figure_id" javaType="com.example.mybatisx.entity.Figure">
+            <id property="id" column="f_id"/>
+            <result property="height" column="height"/>
+            <result property="weight" column="weight"/>
+        </association>
+    </resultMap>
+
     <sql id="Base_Column_List">
-        id,name,gender,
+        id
+        ,name,gender,
         create_time,update_time,is_deleted
     </sql>
     <select id="selectOneById" resultMap="BaseResultMap">
@@ -44,10 +67,43 @@
         from users
     </select>
     <select id="getAllFamilyInfo" resultMap="FamilyInfo">
-        select users.id as u_id, users.name as u_name, users.gender, family.id as f_id, family.name as f_name, family.type
+        select users.id    as u_id,
+               users.name  as u_name,
+               users.gender,
+               family.id   as f_id,
+               family.name as f_name,
+               family.type
+        from users
+                 left join family
+                           on users.name = family.name
+    </select>
+
+
+
+    <select id="getAllFamily" resultMap="familyMap">
+        select users.id    as u_id,
+               users.name  as u_name,
+               users.gender,
+               family.id   as f_id,
+               family.name as f_name,
+               family.type
         from users
         left join family
-        on users.name=family.name
+        on users.name = family.name
+
     </select>
+    <select id="getFigureInfo" resultMap="FigureInfo">
+        select users.id as u_id, users.name as u_name, users.gender, figure.id as f_id, figure.height, figure.weight
+        from users
+                 left join figure
+                           on users.id = figure.id
+    </select>
+    <insert id="insertBatch">
+        insert into users(name,gender)
+        values
+        <foreach collection="usersCollection" item="item" separator=",">
+            (#{item.name,jdbcType=VARCHAR},#{item.gender,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
 
 </mapper>

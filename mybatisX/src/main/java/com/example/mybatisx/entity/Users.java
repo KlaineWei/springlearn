@@ -60,4 +60,7 @@ public class Users implements Serializable {
 
     @TableField(exist = false)
     private List<Family> family;
+
+    @TableField(exist = false)
+    private Figure figure;
 }

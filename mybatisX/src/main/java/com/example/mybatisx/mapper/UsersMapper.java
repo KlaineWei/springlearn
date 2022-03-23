@@ -1,7 +1,10 @@
 package com.example.mybatisx.mapper;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.mybatisx.entity.Family;
 import com.example.mybatisx.entity.Users;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
@@ -22,6 +25,13 @@ public interface UsersMapper extends BaseMapper<Users> {
     List<Users> selectAll();
 
     List<Users> getAllFamilyInfo();
+
+    List<Users> getFigureInfo();
+
+    int insertBatch(@Param("usersCollection") Collection<Users> usersCollection);
+
+    List<JSONObject> getAllFamily();
+
 }
 
 

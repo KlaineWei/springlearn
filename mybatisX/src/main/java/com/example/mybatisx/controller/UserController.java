@@ -1,5 +1,6 @@
 package com.example.mybatisx.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.mybatisx.entity.Users;
 import com.example.mybatisx.service.UsersService;
@@ -7,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -47,6 +50,21 @@ public class UserController {
     @GetMapping("/family")
     public List<Users> getAllFamilyInfo(){
         return usersService.getAllFamilyInfo();
+    }
+
+    @GetMapping("/figure")
+    public List<Users> getFigureInfo(){
+        return usersService.getFigureInfo();
+    }
+
+    @PostMapping("/add")
+    public void insertBatch(@RequestBody Collection<Users> usersCollection){
+        usersService.insertBatch(usersCollection);
+    }
+
+    @GetMapping("/familyInfo")
+    public List<JSONObject> getFamily(){
+        return usersService.getAllFamily();
     }
 
 }

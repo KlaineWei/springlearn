@@ -1,9 +1,12 @@
 package com.example.mybatisx.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.mybatisx.entity.Users;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -20,4 +23,10 @@ public interface UsersService extends IService<Users> {
     Page<Users> selectPage(Integer id, Integer size);
 
     List<Users> getAllFamilyInfo();
+
+    List<Users> getFigureInfo();
+
+    int insertBatch(Collection<Users> usersCollection);
+
+    List<JSONObject> getAllFamily();
 }
