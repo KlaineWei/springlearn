@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("redis")
@@ -23,10 +24,16 @@ public class redisController {
     @GetMapping("/getBit")
     public Boolean getBit(){
 
-        redisTemplate.opsForValue().setBit("weizh", 1000, true );
-        Boolean flag = redisTemplate.opsForValue().getBit("weizh", 1000);
-        Long weizh = redisTemplate.getExpire("weizh");
+        redisTemplate.opsForValue().setBit("weizh", 1000, true );   //给key为"weizh"的1000位置1
+        Boolean flag = redisTemplate.opsForValue().getBit("weizh", 1000);  //查询key为"weizh"的1000位置值
+        Long weizh = redisTemplate.getExpire("weizh");   //获取过期时间，如果没有设置，则为-1，永远不会过期
+        redisTemplate.expire("weizh", 10, TimeUnit.MINUTES);  //设置过期时间
+        Long weizh1 = redisTemplate.getExpire("weizh");  //获取过期时间
         System.out.println(weizh);
+        System.out.println(weizh1);
+        redisTemplate.delete("weizh");   //删除key为"weizh"的记录
+        Object weizh2 = redisTemplate.opsForValue().get("weizh");
+        System.out.println(weizh2);
         return flag;
     }
 
@@ -50,7 +57,7 @@ public class redisController {
         String key2 = "test2";
         Long startTime2 = System.currentTimeMillis();
         for (int i : offset) {
-            redisTemplate.opsForValue().setBit(key, i, true);
+            redisTemplate.opsForValue().setBit(key2, i, true);
         }
         Long endTime2 = System.currentTimeMillis();
         Long costTime2 = endTime2-startTime2;
