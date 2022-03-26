@@ -63,6 +63,8 @@
                             <artifactId>lombok</artifactId>
                             <version>${lombok.version}</version>
                         </path>
+                        <!--要使用mapstruct和lombok需要添加这个组件-->
+                        <!--lombok和mapstruct都是在编译的时候动态生成文件，如果不添加会造成mapstruct生成时找不到属性，生成属性为空-->
                         <dependency>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok-mapstruct-binding</artifactId>
