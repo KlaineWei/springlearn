@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -24,6 +22,7 @@ public class redisController {
     @GetMapping("/getBit")
     public Boolean getBit(){
 
+        Boolean existFlag = redisTemplate.hasKey("weizh");  //查看key为weizh的记录是否存在
         redisTemplate.opsForValue().setBit("weizh", 1000, true );   //给key为"weizh"的1000位置1
         Boolean flag = redisTemplate.opsForValue().getBit("weizh", 1000);  //查询key为"weizh"的1000位置值
         Long weizh = redisTemplate.getExpire("weizh");   //获取过期时间，如果没有设置，则为-1，永远不会过期
