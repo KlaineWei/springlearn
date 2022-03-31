@@ -12,6 +12,8 @@ public interface cacheService {
 
     public User addUser(User user);
 
+    public List<User> addUserList(Integer id, List<User> userList);
+
     public User updateUser(User user);
 
     public void deleteUser(Integer id);

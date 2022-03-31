@@ -32,6 +32,12 @@ public class cacheController {
         return user;
     }
 
+    @PostMapping("addUserList")
+    public List<User> addUserList(Integer id, @RequestBody List<User> userList){
+        service.addUserList(id, userList);
+        return userList;
+    }
+
     @PostMapping("updateUser")
     public User updateUser(@RequestBody User user){
         service.updateUser(user);

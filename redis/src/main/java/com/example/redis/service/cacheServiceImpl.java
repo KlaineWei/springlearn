@@ -54,6 +54,13 @@ public class cacheServiceImpl implements cacheService {
     }
 
     @Override
+    @CachePut(value = "user-rolelist", key = "#id")
+    public List<User> addUserList(Integer id, List<User> userList) {
+        System.out.println("============进来存某用户的list了========");
+        return userList;
+    }
+
+    @Override
     @CachePut(value = "user", key = "#user.id")
     public User updateUser(User user) {
         System.out.println("========进来修改数据了=======");

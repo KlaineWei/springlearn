@@ -52,4 +52,18 @@ public class RedisConfig {
                 .build();
         return cacheManager;
     }
+
+//    public RedisCacheConfiguration getCacheConfigurationWithTtl(RedisTemplate<String, Object> template, long mins) {
+//
+//        return RedisCacheConfiguration
+//                .defaultCacheConfig()
+//                // 设置key为String
+//                .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(template.getStringSerializer()))
+//                // 设置value 为自动转Json的Object
+//                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(template.getValueSerializer()))
+//                // 不缓存null
+//                .disableCachingNullValues()
+//                // 缓存数据保存1小时
+//                .entryTtl(Duration.ofMinutes(mins));
+//    }
 }
