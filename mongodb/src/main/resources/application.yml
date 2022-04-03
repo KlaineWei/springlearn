@@ -1,0 +1,13 @@
+spring:
+  data:
+    mongodb:
+      authentication-database: admin
+      database: db_student
+      host: localhost
+      port: 27017
+      username: admin
+      password: '12345678'
+
+logging:
+  level:
+    org.springframework.data.mongodb.core: debug
