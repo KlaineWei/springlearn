@@ -37,4 +37,9 @@ public class StudentDaoTest extends MongodbApplicationTests{
         List<Student> studentList = studentDao.findAll();
         studentList.forEach(System.out::println);
     }
+
+    @Test
+    void deleteOneStudentByStudentId(){
+        studentDao.deleteById("student_0");
+    }
 }
