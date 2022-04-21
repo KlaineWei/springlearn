@@ -1,4 +1,4 @@
-package com.example.rabbitmqdirect.receiver;
+package com.example.rabbitmq.receiver;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
@@ -12,11 +12,11 @@ import java.util.Map;
  */
 @Component
 @Slf4j
-@RabbitListener(queues = "topicA")
-public class TopicReceiverA {
+@RabbitListener(queues = "topicB")
+public class TopicReceiverB {
 
     @RabbitHandler
     public void process(Map msg){
-        log.info("topicA收到消息：{}", msg);
+        log.info("topicB收到消息：{}", msg);
     }
 }

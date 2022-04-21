@@ -1,4 +1,4 @@
-package com.example.rabbitmqdirect.receiver;
+package com.example.rabbitmq.receiver;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
@@ -12,11 +12,11 @@ import java.util.Map;
  */
 @Component
 @Slf4j
-@RabbitListener(queues = "fanoutC")
-public class FanoutReceiverC {
+@RabbitListener(queues = "fanoutA")
+public class FanoutReceiverA {
 
     @RabbitHandler
-    public void process(Map msg){
-        log.info("fanoutC收到消息：{}", msg);
+    public void process(Map testMessage){
+        log.info("fanoutA收到消息： {}", testMessage);
     }
 }

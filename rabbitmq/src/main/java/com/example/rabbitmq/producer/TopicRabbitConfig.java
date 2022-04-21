@@ -1,6 +1,5 @@
-package com.example.rabbitmqdirect.producer;
+package com.example.rabbitmq.producer;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;

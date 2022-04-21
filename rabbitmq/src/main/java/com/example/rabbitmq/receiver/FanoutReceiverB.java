@@ -1,4 +1,4 @@
-package com.example.rabbitmqdirect.receiver;
+package com.example.rabbitmq.receiver;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
