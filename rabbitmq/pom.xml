@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>rabbitmq-direct</artifactId>
+    <artifactId>rabbitmq</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>rabbitmq-direct</name>
-    <description>rabbitmq-direct</description>
+    <name>rabbitmq</name>
+    <description>rabbitmq</description>
     <properties>
         <java.version>11</java.version>
     </properties>
