@@ -51,10 +51,7 @@ public class SendMessageController {
         map.put("messageData", msg);
         map.put("createTime", LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         log.info("当前时间：{} 发送消息", new Date());
-//        rabbitTemplate.setMandatory(true);
-//        CorrelationData correlationData = new CorrelationData(new Date().toString());
         rabbitTemplate.convertAndSend("delayExchange", "delayRouting", map, message -> {
-
             message.getMessageProperties().setDelay(delayTime);
             return message;
         });
