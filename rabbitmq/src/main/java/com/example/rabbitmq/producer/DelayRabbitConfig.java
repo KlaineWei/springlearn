@@ -18,6 +18,7 @@ public class DelayRabbitConfig {
     @Bean
     public DirectExchange delayExchange(){
         DirectExchange exchange = new DirectExchange("delayExchange", true, false);
+        // 比起设置正常队列，只多了这一个配置
         exchange.setDelayed(true);
         return exchange;
     }
