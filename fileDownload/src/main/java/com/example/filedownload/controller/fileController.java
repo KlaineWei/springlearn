@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URLEncoder;
 
+/**
+ * @author weizihan
+ */
 @Controller
 @RequestMapping("file")
 public class fileController {
