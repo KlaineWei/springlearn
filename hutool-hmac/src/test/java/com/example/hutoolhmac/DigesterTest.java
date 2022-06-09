@@ -47,11 +47,11 @@ public class DigesterTest {
     @Test
     public void hmacsha256(){
         String password = "12345678abc";
-        byte[] key = "password".getBytes();
+        byte[] key = "jsou@*^@^%$@@".getBytes();
         HMac mac = new HMac(HmacAlgorithm.HmacSHA256, key);
 
-        String macHex = mac.digestHex(password);
-        System.out.println(macHex);
+        String macBase64 = mac.digestBase64(password, true);
+        System.out.println(macBase64);
     }
 }
 
